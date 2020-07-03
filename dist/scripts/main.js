@@ -4,17 +4,13 @@ import { calendar } from "./calendar.js";
 (async () => {
     const itime = document.querySelector('#itime'), inumber = document.querySelector('#inumber');
     const itimed = document.querySelector('#itimed'), inumberd = document.querySelector('#inumberd');
-    const minimum = 1, maximum = 10000;
-    function next(maximum, minimum) {
-        return (Math.random() * (maximum - minimum + 1)) << 0;
-    }
     function getSafe(r, mod) {
         const v = r > mod ? (r % mod) : r;
         const n = v === 0 ? mod : v;
         return n;
     }
     function nextN(mod, input = undefined) {
-        const r = (input === undefined || input === null || input === '') ? next(maximum, minimum) : parseInt(input, 10);
+        const r = (input === undefined || input === null || input === '') ? new Date().getMilliseconds() : parseInt(input, 10);
         const n = getSafe(r, mod);
         return { n: n, o: r };
     }
