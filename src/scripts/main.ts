@@ -73,6 +73,7 @@ import { calendar } from "./calendar.js";
         document.querySelectorAll('.clear').forEach(e => e.textContent = '');
     });
     document.querySelector('#go').addEventListener('click', () => {
+        document.body.style.height = '100vh';
         elements.forEach(x => x.removeAttribute('gua'));
         const bn = nextN(8, inumber.value);
         const b = bn.n;
