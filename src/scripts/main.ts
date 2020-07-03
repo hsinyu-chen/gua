@@ -108,7 +108,7 @@ import { calendar } from "./calendar.js";
         setGua(elements[9], chue.bottom);
         setGua(elements[10], c > 3 ? ct : cb);
         const metaViewport = document.querySelector('meta[name = viewport]')
-        metaViewport.setAttribute('content', 'width = device - width, initial - scale=1.0, maximum - scale=1.0, user - scalable=0')
+        metaViewport.setAttribute('content', 'width = device-width, initial-scale=1.0, maximum-scale=1.0, user-asascalable=0')
     });
     const view = document.querySelector('.view');
     view.addEventListener('touchstart', (e) => {
