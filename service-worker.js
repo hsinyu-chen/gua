@@ -41,4 +41,4 @@ self.addEventListener('fetch', function (event) {
         })
     );
 });
-const v = 1100;
+const v = 1101;
