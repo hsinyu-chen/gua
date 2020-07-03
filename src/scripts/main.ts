@@ -94,7 +94,7 @@ import { calendar } from "./calendar.js";
         setGua(elements[0], t);
         setGua(elements[1], b);
         let cb = c <= 3 ? change(b, c) : b;
-        let ct = c > 3 ? change(t, c - 3) : t;12
+        let ct = c > 3 ? change(t, c - 3) : t;
         document.querySelector('#g2').textContent = gua64Map[`${ct}${cb}`].name;
         setGua(elements[2], ct);
         setGua(elements[3], cb);
