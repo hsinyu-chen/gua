@@ -1,0 +1,22 @@
+{
+    "typescript.preferences.importModuleSpecifierEnding": "js",
+    "liveSassCompile.settings.excludeList": [
+        "**/node_modules/**",
+        ".vscode/**"
+    ],
+    "liveSassCompile.settings.formats": [
+        {
+            "extensionName": ".css",
+            "savePath": "/dist",
+            "format": "compressed"
+        }
+    ],
+    "liveServer.settings.port": 5502,
+    "liveServer.settings.root": "/",
+    "liveServer.settings.https": {
+        "enable": true,
+        "cert": "E:\\cert\\localhost.pem",
+        "key": "E:\\cert\\localhost.key",
+        "passphrase": "1234"
+    }
+}

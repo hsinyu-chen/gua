@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "noEmitOnError": true,
+        "removeComments": true,
+        "sourceMap": false,
+        "module": "esnext",
+        "moduleResolution": "Node",
+        "outDir": "../dist/scripts",
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "baseUrl": "/",
+        "target": "ESNext",
+        "experimentalDecorators": true
+    },
+    "compileOnSave": true,
+    "exclude": [
+        "node_modules"
+    ]
+}

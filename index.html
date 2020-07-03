@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <title>Gua</title>
+    <base href="/" />
+    <link rel="stylesheet" href="/dist/main.css" />
+</head>
+
+<body>
+    <div class="c view column">
+        <div class="row center clear" id="change"></div>
+        <div class="row">
+            <div class="column flex">
+                <div class="row center">本掛</div>
+                <div class="gua flex" id="a1"></div>
+                <div class="gua flex" id="b1"></div>
+                <div class="row center clear" id="g1"></div>
+            </div>
+            <div class="column flex">
+                <div class="row center">變卦</div>
+                <div class="gua flex" id="a2"></div>
+                <div class="gua flex" id="b2"></div>
+
+                <div class="row center clear" id="g2"></div>
+            </div>
+        </div>
+        <div class="row center">&nbsp;</div>
+        <div class="row">
+            <div class="column flex">
+                <div class="row center">體互</div>
+                <div class="gua flex" id="d1"></div>
+                <div class="gua flex" id="d2"></div>
+            </div>
+            <div class="column flex">
+                <div class="row center">變互</div>
+                <div class="gua flex" id="cd1"></div>
+                <div class="gua flex" id="cd2"></div>
+            </div>
+        </div>
+        <div class="row mt">
+            <div class="column flex">
+                <div class="row center">體</div>
+                <div class="gua flex" id="c"></div>
+            </div>
+            <div class="column flex">
+                <div class="row center">用</div>
+                <div class="gua flex" id="e"></div>
+            </div>
+            <div class="column flex">
+                <div class="row center">變</div>
+                <div class="gua flex" id="f"></div>
+            </div>
+        </div>
+    </div>
+    <div class="c action row">
+        <div class="row center flex clear" id="inumberd"></div>
+        <div class="row center flex clear" id="itimed"></div>
+    </div>
+    <div class="c row">
+        <input type="number" id="inumber" min="0" placeholder="數字" />
+        <select id="itime">
+            <option value="-1" selected>現在</option>
+            <option value="1">子時23～1點</option>
+            <option value="2">丑時1～3點</option>
+            <option value="3">寅時3～5點</option>
+            <option value="4">卯時5～7點</option>
+            <option value="5">辰時7～9點</option>
+            <option value="6">巳時9～11點</option>
+            <option value="7">午時11～13點</option>
+            <option value="8">未時13～15點</option>
+            <option value="9">申時15～17點</option>
+            <option value="10">酉時17～19點</option>
+            <option value="11">戌時19～21點</option>
+            <option value="12">亥時21～23點</option>
+        </select>
+    </div>
+    <div class="c row">
+        <button type="button" id="reset">清除</button>
+        <button type="button" id="go">取掛</button>
+    </div>
+    <script type="module" src="dist/scripts/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+:root {
+    --layer-render: 0;
+    --layer-ui: 1;
+}
+
+$size: 10;
+
+* {
+    font-family: '微軟正黑體', 'Segoe UI Symbol';
+    font-size: 30px;
+    color: rgb(200, 200, 200);
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    display: block;
+    background-color: #000;
+    position: relative;
+    overflow: auto;
+    display: flex;
+
+    >div {
+        width: 100%;
+        display: flex;
+
+        &.view {
+            flex: 1 1 auto;
+        }
+    }
+}
+
+html {
+    justify-content: center;
+
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    max-width: 800px;
+    height: 100vh;
+    width: 800px;
+    min-width: 300px;
+    flex-direction: column;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+button {
+    flex: 1;
+    outline: none;
+    border: 1px solid rgb(150, 150, 150);
+    margin: 5px;
+    background-color: rgb(50, 50, 50);
+}
+
+input,
+select {
+    flex: 1;
+    min-width: 0;
+    background-color: rgb(50, 50, 50);
+    outline: none;
+    border: 1px solid rgb(150, 150, 150);
+    margin: 5px;
+}
+
+[tab]:not([active]:first-child) {
+    display: none;
+}
+
+.mt {
+    margin-top: 4vh;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex {
+    flex: 1 1 0;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.action {
+    border-top: 1px solid rgb(150, 150, 150);
+}
+
+[gua] {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    line-height: 60px;
+
+    @media (min-width:600px) {
+        font-size: 80px;
+        line-height: 80px;
+    }
+
+    @media (min-width:800px) {
+        font-size: 100px;
+        line-height: 100px;
+    }
+
+    color: rgb(200, 200, 200);
+    font-family: 'Segoe UI Symbol';
+
+    &::after {
+        font-size: 20%;
+    }
+
+    &[gua="1"]::before {
+        content: '☰';
+    }
+
+
+
+    &[gua="2"]::before {
+        content: '☱';
+    }
+
+
+    &[gua="3"]::before {
+        content: '☲';
+    }
+
+
+    &[gua="4"]::before {
+        content: '☳';
+    }
+
+
+    &[gua="5"]::before {
+        content: '☴';
+    }
+
+
+
+    &[gua="6"]::before {
+        content: '☵';
+    }
+
+
+
+    &[gua="7"]::before {
+        content: '☶';
+    }
+
+
+    &[gua="8"]::before {
+        content: '☷';
+    }
+
+}
+
+.show-detail {
+    [gua] {
+        &[gua="6"]::after {
+            content: '6 坎(水)';
+        }
+
+        &[gua="1"]::after {
+            content: '1 乾(天)';
+        }
+
+        &[gua="2"]::after {
+            content: '2 兌(澤)';
+        }
+
+        &[gua="3"]::after {
+            content: '3 離(火)';
+        }
+
+        &[gua="4"]::after {
+            content: '4 震(雷)';
+        }
+
+        &[gua="5"]::after {
+            content: '5 巽(風)';
+        }
+
+        &[gua="7"]::after {
+            content: '7 艮(山)';
+        }
+
+        &[gua="8"]::after {
+            content: '8 坤(地)';
+        }
+    }
+}
