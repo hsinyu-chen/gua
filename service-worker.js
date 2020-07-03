@@ -1,4 +1,4 @@
-const v = 9999;
+const v = 99999;
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open('web').then(function (cache) {

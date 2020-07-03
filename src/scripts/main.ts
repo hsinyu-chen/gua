@@ -7,10 +7,6 @@ import { calendar } from "./calendar.js";
         inumber = document.querySelector<HTMLInputElement>('#inumber')
     const itimed = document.querySelector<HTMLElement>('#itimed'),
         inumberd = document.querySelector<HTMLElement>('#inumberd')
-    const minimum = 1, maximum = 10000;
-    function next(maximum: number, minimum: number) {
-        return (Math.random() * (maximum - minimum + 1)) << 0;
-    }
     function getSafe(r: number, mod: number) {
         const v = r > mod ? (r % mod) : r;
         const n = v === 0 ? mod : v;
@@ -18,7 +14,7 @@ import { calendar } from "./calendar.js";
     }
 
     function nextN(mod: number, input: string = undefined): { n: number, o: number } {
-        const r = (input === undefined || input === null || input === '') ? next(maximum, minimum) : parseInt(input, 10);
+        const r = (input === undefined || input === null || input === '') ? new Date().getMilliseconds() : parseInt(input, 10);
         const n = getSafe(r, mod);
         return { n: n, o: r };
     }
