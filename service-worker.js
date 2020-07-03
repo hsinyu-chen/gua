@@ -1,3 +1,4 @@
+const v = 9999;
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open('web').then(function (cache) {
@@ -41,4 +42,3 @@ self.addEventListener('fetch', function (event) {
         })
     );
 });
-const v = 9999;
