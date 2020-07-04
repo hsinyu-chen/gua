@@ -12,7 +12,7 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ffffff">
-    <title>Gua v1.5</title>
+    <title>掛 v2.0</title>
     <link rel="stylesheet" href="dist/main.css" />
 </head>
 
@@ -64,38 +64,54 @@
         </div>
 
     </div>
-    <div class="column w100 btm">
+    <div class="column w100 btm action">
         <div class="c row clean center" id="now">
 
         </div>
-        <div class="c action row">
-            <div class="row center flex clear" id="inumberd"></div>
-            <div class="row center flex clear" id="itimed"></div>
-        </div>
-
-        <div class="c row">
-            <button type="button" id="au" style="max-width: 40px;">？</button>
-            <input type="number" id="inumber" min="0" placeholder="數字" />
-            <select id="itime">
-                <option value="-1" selected>現在</option>
-                <option value="1">子時23～1點</option>
-                <option value="2">丑時1～3點</option>
-                <option value="3">寅時3～5點</option>
-                <option value="4">卯時5～7點</option>
-                <option value="5">辰時7～9點</option>
-                <option value="6">巳時9～11點</option>
-                <option value="7">午時11～13點</option>
-                <option value="8">未時13～15點</option>
-                <option value="9">申時15～17點</option>
-                <option value="10">酉時17～19點</option>
-                <option value="11">戌時19～21點</option>
-                <option value="12">亥時21～23點</option>
-            </select>
-        </div>
-        <div class="c row">
-            <button type="button" id="theme" style="max-width: 40px;">色</button>
-            <button type="button" id="reset">清除</button>
-            <button type="button" id="go">取掛</button>
+        <div class="row w100 action">
+            <div class="column">
+                <div class="row"> <button type="button" id="setting" style="max-width: 40px;">設</button></div>
+                <div class="row"><button type="button" id="au" style="max-width: 40px;">作</button></div>
+                <div class="row"> <button type="button" id="theme" style="max-width: 40px;">色</button></div>
+            </div>
+            <div class="column flex sb">
+                <div class="row" takeNumberMethod="2" style="display: none;">
+                    <div class="row center flex clear" id="inumber1d"></div>
+                    <div class="row center flex clear" id="inumber2d"></div>
+                    <div class="row center flex clear" id="inumber3d"></div>
+                </div>
+                <div class="row" takeNumberMethod="2" style="display: none;">
+                    <input type="number" class="w100" id="inumber1" min="0" placeholder="數字1" />
+                    <input type="number" class="w100" id="inumber2" min="0" placeholder="數字2" />
+                    <input type="number" class="w100" id="inumber3" min="0" placeholder="數字3" />
+                </div>
+                <div class="row" takeNumberMethod="1">
+                    <div class="row center flex clear" id="inumberd"></div>
+                    <div class="row center flex clear" id="itimed"></div>
+                </div>
+                <div class="row" takeNumberMethod="1">
+                    <input type="number" class="w100" id="inumber" min="0" placeholder="數字" />
+                    <select id="itime" class="w100">
+                        <option value="-1" selected>現在</option>
+                        <option value="1">子時23～1點</option>
+                        <option value="2">丑時1～3點</option>
+                        <option value="3">寅時3～5點</option>
+                        <option value="4">卯時5～7點</option>
+                        <option value="5">辰時7～9點</option>
+                        <option value="6">巳時9～11點</option>
+                        <option value="7">午時11～13點</option>
+                        <option value="8">未時13～15點</option>
+                        <option value="9">申時15～17點</option>
+                        <option value="10">酉時17～19點</option>
+                        <option value="11">戌時19～21點</option>
+                        <option value="12">亥時21～23點</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <button type="button" class="w100" id="reset">清除</button>
+                    <button type="button" class="w100" id="go">取掛</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="detail dialog column" style="display: none;">
@@ -122,6 +138,34 @@
         <h2>Paypal</h2>
         <a target="_blank" href="https://paypal.me/hsinyu?locale.x=zh_TW" rel="nofollow">https://paypal.me/hsinyu</a>
         <div class="row w100 btm"><button class="w100" id="closeAu" type="button">關閉</button></div>
+    </div>
+    <div class="setting dialog column" style="display: none;">
+        <h1>取掛設定</h1>
+        <div class="column w100">
+            <div class="column flex option">
+                <button type="button" setTakeNumberMethod="1">1組數字+時辰取掛</button>
+                <div class="column desc">
+                    <p>下掛:數字除以8取餘數 (0則取8)</p>
+                    <p>上掛:數字加時辰(1~12)除以8取餘數 (0則取8)</p>
+                    <p>變爻:數字加時辰(1~12)除以6取餘數 (0則取6)</p>
+                    <p>數字未輸入則用取掛時間毫秒數</p>
+                    <p>時辰未選擇則用現在時辰</p>
+                </div>
+            </div>
+            <div class="column flex option">
+                <button type="button" setTakeNumberMethod="2">3組數字取掛</button>
+                <div class="column desc">
+                    <p>下掛:第一組數字除以8取餘數 (0則取8)</p>
+                    <p>上掛:第二組數字除以8取餘數 (0則取8)</p>
+                    <p>變爻:第三組數字除以6取餘數 (0則取6)</p>
+                    <p>數字未輸入則自動補毫秒數(000~999)</p>
+                    <p>第一組未填取百位數(0~9)</p>
+                    <p>第二組未填取十位數(0~9)</p>
+                    <p>第三組未填取個位數(0~9)</p>
+                </div>
+            </div>
+        </div>
+        <div class="row w100 btm"><button class="w100" id="closeSetting" type="button">關閉</button></div>
     </div>
     <script type="module" src="dist/scripts/main.js"></script>
     <script>

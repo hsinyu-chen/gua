@@ -1,4 +1,4 @@
-const v = 'v1.5';
+const v = 'v2.0';
 const cacheNamePrefix = 'offline-cache-';
 const cacheName = `${cacheNamePrefix}${v}`;
 self.addEventListener('install', function (event) {
