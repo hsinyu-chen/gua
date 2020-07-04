@@ -9,6 +9,16 @@ import { calendar } from "./calendar.js";
         const n = v === 0 ? mod : v;
         return n;
     }
+    let theme = localStorage.getItem('theme') || '0';
+    setTheme(theme);
+    document.querySelector('#theme').addEventListener('click', () => {
+        let next = +theme + 1;
+        if (next >= 3) {
+            next = 0;
+        }
+        theme = next.toFixed();
+        setTheme(theme);
+    });
     var gua64data = await fetch('data.json').then(x => x.json());
     var types = [];
     var gua64dataMap = {};
@@ -175,3 +185,7 @@ import { calendar } from "./calendar.js";
         });
     });
 })();
+function setTheme(theme) {
+    document.body.setAttribute('theme', theme);
+    localStorage.setItem('theme', theme);
+}

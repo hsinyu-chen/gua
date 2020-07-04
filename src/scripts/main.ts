@@ -12,6 +12,16 @@ import { calendar } from "./calendar.js";
         const n = v === 0 ? mod : v;
         return n;
     }
+    let theme = localStorage.getItem('theme') || '0';
+    setTheme(theme);
+    document.querySelector('#theme').addEventListener('click', () => {
+        let next = +theme + 1;
+        if (next >= 3) {
+            next = 0;
+        }
+        theme = next.toFixed();
+        setTheme(theme);
+    });
     var gua64data: { type: string, name: string, text: string }[] = await fetch('data.json').then(x => x.json());
     var types = [];
     var gua64dataMap = {};
@@ -179,4 +189,9 @@ import { calendar } from "./calendar.js";
 
 
 
+
+function setTheme(theme: string) {
+    document.body.setAttribute('theme', theme);
+    localStorage.setItem('theme', theme);
+}
 
