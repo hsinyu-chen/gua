@@ -1,4 +1,4 @@
-const v = 'v100';
+const v = 'v1.1';
 const cacheNamePrefix = 'offline-cache-';
 const cacheName = `${cacheNamePrefix}${v}`;
 self.addEventListener('install', function (event) {
@@ -28,7 +28,7 @@ self.addEventListener('install', function (event) {
         })
     );
 });
-self.addEventListener('activate', function (event) {
+self.addEventListener('activate', async function (event) {
     const cacheKeys = await caches.keys();
     await Promise.all(cacheKeys
         .filter(key => key.startsWith(cacheNamePrefix) && key !== cacheName)
