@@ -12,89 +12,117 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ffffff">
-    <title>Gua v1.2</title>
+    <title>Gua v1.3</title>
     <link rel="stylesheet" href="dist/main.css" />
 </head>
 
 <body theme="0">
-    <div class="c view column">
-        <div class="row">
-            <div class="column flex">
-                <div class="row center">本掛</div>
-                <div class="gua flex" id="a1"></div>
-                <div class="gua flex" id="b1"></div>
-                <button type="button" class="row center clear open-detail" id="g1"></button>
-            </div>
-            <div class="column flex">
-                <div class="row center">變卦(<span id="change" class="clear"></span>)</div>
-                <div class="gua flex" id="a2"></div>
-                <div class="gua flex" id="b2"></div>
+    <div class="column flex" id="view" style="display: none;">
+        <div class="c view column">
+            <div class="row">
+                <div class="column flex">
+                    <div class="row center">本掛</div>
+                    <div class="gua flex" id="a1"></div>
+                    <div class="gua flex" id="b1"></div>
+                    <button type="button" class="row center clear open-detail" id="g1"></button>
+                </div>
+                <div class="column flex">
+                    <div class="row center">變卦(<span id="change" class="clear"></span>)</div>
+                    <div class="gua flex" id="a2"></div>
+                    <div class="gua flex" id="b2"></div>
 
-                <button type="button" class="row center clear open-detail" id="g2"></button>
+                    <button type="button" class="row center clear open-detail" id="g2"></button>
+                </div>
+            </div>
+            <div class="row center">&nbsp;</div>
+            <div class="row">
+                <div class="column flex">
+                    <div class="row center">體互</div>
+                    <div class="gua flex" id="d1"></div>
+                    <div class="gua flex" id="d2"></div>
+                </div>
+                <div class="column flex">
+                    <div class="row center">變互</div>
+                    <div class="gua flex" id="cd1"></div>
+                    <div class="gua flex" id="cd2"></div>
+                </div>
+            </div>
+            <div class="row mt">
+                <div class="column flex">
+                    <div class="row center">體</div>
+                    <div class="gua flex" id="c"></div>
+                </div>
+                <div class="column flex">
+                    <div class="row center">用</div>
+                    <div class="gua flex" id="e"></div>
+                </div>
+                <div class="column flex">
+                    <div class="row center">變</div>
+                    <div class="gua flex" id="f"></div>
+                </div>
             </div>
         </div>
-        <div class="row center">&nbsp;</div>
-        <div class="row">
-            <div class="column flex">
-                <div class="row center">體互</div>
-                <div class="gua flex" id="d1"></div>
-                <div class="gua flex" id="d2"></div>
-            </div>
-            <div class="column flex">
-                <div class="row center">變互</div>
-                <div class="gua flex" id="cd1"></div>
-                <div class="gua flex" id="cd2"></div>
-            </div>
-        </div>
-        <div class="row mt">
-            <div class="column flex">
-                <div class="row center">體</div>
-                <div class="gua flex" id="c"></div>
-            </div>
-            <div class="column flex">
-                <div class="row center">用</div>
-                <div class="gua flex" id="e"></div>
-            </div>
-            <div class="column flex">
-                <div class="row center">變</div>
-                <div class="gua flex" id="f"></div>
-            </div>
-        </div>
-    </div>
-    <div class="c row clean center" id="now">
 
     </div>
-    <div class="c action row">
-        <div class="row center flex clear" id="inumberd"></div>
-        <div class="row center flex clear" id="itimed"></div>
-    </div>
+    <div class="column w100 btm">
+        <div class="c row clean center" id="now">
 
-    <div class="c row">
-        <input type="number" id="inumber" min="0" placeholder="數字" />
-        <select id="itime">
-            <option value="-1" selected>現在</option>
-            <option value="1">子時23～1點</option>
-            <option value="2">丑時1～3點</option>
-            <option value="3">寅時3～5點</option>
-            <option value="4">卯時5～7點</option>
-            <option value="5">辰時7～9點</option>
-            <option value="6">巳時9～11點</option>
-            <option value="7">午時11～13點</option>
-            <option value="8">未時13～15點</option>
-            <option value="9">申時15～17點</option>
-            <option value="10">酉時17～19點</option>
-            <option value="11">戌時19～21點</option>
-            <option value="12">亥時21～23點</option>
-        </select>
+        </div>
+        <div class="c action row">
+            <div class="row center flex clear" id="inumberd"></div>
+            <div class="row center flex clear" id="itimed"></div>
+        </div>
+
+        <div class="c row">
+            <button type="button" id="au" style="max-width: 40px;">？</button>
+            <input type="number" id="inumber" min="0" placeholder="數字" />
+            <select id="itime">
+                <option value="-1" selected>現在</option>
+                <option value="1">子時23～1點</option>
+                <option value="2">丑時1～3點</option>
+                <option value="3">寅時3～5點</option>
+                <option value="4">卯時5～7點</option>
+                <option value="5">辰時7～9點</option>
+                <option value="6">巳時9～11點</option>
+                <option value="7">午時11～13點</option>
+                <option value="8">未時13～15點</option>
+                <option value="9">申時15～17點</option>
+                <option value="10">酉時17～19點</option>
+                <option value="11">戌時19～21點</option>
+                <option value="12">亥時21～23點</option>
+            </select>
+        </div>
+        <div class="c row">
+            <button type="button" id="theme" style="max-width: 40px;">色</button>
+            <button type="button" id="reset">清除</button>
+            <button type="button" id="go">取掛</button>
+        </div>
     </div>
-    <div class="c row">
-        <button type="button" id="theme" style="max-width: 40px;">色</button>
-        <button type="button" id="reset">清除</button>
-        <button type="button" id="go">取掛</button>
-    </div>
-    <div class="detail column" style="display: none;">
+    <div class="detail dialog column" style="display: none;">
         <div id="nav" class="w100 row"></div>
         <div id="tabs" class="w100 row flex"></div>
+    </div>
+    <div class="au dialog column" style="display: none;">
+        <h1>梅花易取掛程式</h1>
+        <h2>github <a target="_blank" href="https://github.com/hsinyu-chen/gua/tree/master">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                    </path>
+                </svg>
+            </a></h2>
+        <p><a href="https://hsinyu-chen.github.io/gua/" rel="nofollow">https://hsinyu-chen.github.io/gua/</a></p>
+        <h1><a id="user-content-捐獻" class="anchor" aria-hidden="true" href="#捐獻"></a>捐獻</h1>
+        <p>##Line pay:
+            21000916045</p>
+        <p><a target="_blank" rel="noopener noreferrer"
+                href="https://raw.githubusercontent.com/hsinyu-chen/gua/master/1593844954546.jpg"><img
+                    src="https://raw.githubusercontent.com/hsinyu-chen/gua/master/1593844954546.jpg" width="200px"
+                    style="max-width:100%;"></a></p>
+        ##Paypal
+        <a target="_blank" href="https://paypal.me/hsinyu?locale.x=zh_TW" rel="nofollow">https://paypal.me/hsinyu</a>
+        <div class="row w100 btm"><button class="w100" id="closeAu" type="button">關閉</button></div>
     </div>
     <script type="module" src="dist/scripts/main.js"></script>
     <script>

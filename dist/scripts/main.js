@@ -2,6 +2,18 @@ import { gua64Map } from "./gua64.js";
 import { getCurrentShiZhi, getResultfunction } from "./time.js";
 import { calendar } from "./calendar.js";
 (async () => {
+    const viewContainer = document.querySelector('#view');
+    function updateNow() {
+        if (new Date().getFullYear() <= 2100) {
+            const result = getResultfunction(calendar.solar2lunar(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()));
+            document.querySelector('#now').textContent = `今日農曆干支:${result.year}年 ${result.month}月 ${result.date}日`;
+        }
+    }
+    updateNow();
+    function setTheme(theme) {
+        document.body.setAttribute('theme', theme);
+        localStorage.setItem('theme', theme);
+    }
     const itime = document.querySelector('#itime'), inumber = document.querySelector('#inumber');
     const itimed = document.querySelector('#itimed'), inumberd = document.querySelector('#inumberd');
     function getSafe(r, mod) {
@@ -80,10 +92,18 @@ import { calendar } from "./calendar.js";
         return e;
     });
     document.querySelector('#reset').addEventListener('click', () => {
+        viewContainer.style.display = 'none';
         itime.value = '-1';
         inumber.value = '';
         elements.forEach(x => x.removeAttribute('gua'));
         document.querySelectorAll('.clear').forEach(e => e.textContent = '');
+    });
+    const au = document.querySelector('.au');
+    document.querySelector('#au').addEventListener('click', () => {
+        au.style.display = '';
+    });
+    document.querySelector('#closeAu').addEventListener('click', () => {
+        au.style.display = 'none';
     });
     document.querySelector('#go').addEventListener('click', () => {
         elements.forEach(x => x.removeAttribute('gua'));
@@ -96,10 +116,7 @@ import { calendar } from "./calendar.js";
         }
         const tn = nextN(8, `${bn.o + time}`);
         const t = tn.n;
-        if (new Date().getFullYear() <= 2100) {
-            const result = getResultfunction(calendar.solar2lunar(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()));
-            document.querySelector('#now').textContent = `今日農曆干支:${result.year}年 ${result.month}月 ${result.date}日`;
-        }
+        updateNow();
         itimed.textContent = `${itime.querySelector(`[value="${time}"]`).textContent}`;
         const c = getSafe(bn.o + time, 6);
         document.querySelector('#g1').textContent = gua64Map[`${t}${b}`].name;
@@ -120,6 +137,7 @@ import { calendar } from "./calendar.js";
         setGua(elements[8], chue.top);
         setGua(elements[9], chue.bottom);
         setGua(elements[10], c > 3 ? ct : cb);
+        viewContainer.style.display = '';
         requestAnimationFrame(() => {
             const metaViewport = document.querySelector('meta[name = viewport]');
             metaViewport.setAttribute('content', `width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,height=${window.innerHeight}px`);
@@ -185,7 +203,3 @@ import { calendar } from "./calendar.js";
         });
     });
 })();
-function setTheme(theme) {
-    document.body.setAttribute('theme', theme);
-    localStorage.setItem('theme', theme);
-}
