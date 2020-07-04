@@ -1,12 +1,18 @@
-const v = 99999;
+const v = 'v100';
+const cacheNamePrefix = 'offline-cache-';
+const cacheName = `${cacheNamePrefix}${v}`;
 self.addEventListener('install', function (event) {
     event.waitUntil(
-        caches.open('web').then(function (cache) {
+        caches.open(cacheName).then(function (cache) {
             return cache.addAll(
                 [
                     '/gua/',
                     '/gua/index.html',
+                    '/gua/data.json',
                     '/gua/dist/main.css',
+                    '/gua/dist/scripts/calendar.js',
+                    '/gua/dist/scripts/gua64.js',
+                    '/gua/dist/scripts/time.js',
                     '/gua/dist/scripts/main.js',
                     '/gua/android-chrome-192x192.png',
                     '/gua/android-chrome-512x512.png',
@@ -23,17 +29,10 @@ self.addEventListener('install', function (event) {
     );
 });
 self.addEventListener('activate', function (event) {
-    event.waitUntil(
-        caches.keys().then(function (cacheNames) {
-            return Promise.all(
-                cacheNames.filter(function (cacheName) {
-                    return true;
-                }).map(function (cacheName) {
-                    return caches.delete(cacheName);
-                })
-            );
-        })
-    );
+    const cacheKeys = await caches.keys();
+    await Promise.all(cacheKeys
+        .filter(key => key.startsWith(cacheNamePrefix) && key !== cacheName)
+        .map(key => caches.delete(key)));
 });
 self.addEventListener('fetch', function (event) {
     event.respondWith(

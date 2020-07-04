@@ -1,5 +1,5 @@
 import { gua64Map } from "./gua64.js";
-import { getShiZhiIndex, getRiGan, __JiaZi, __ShiGanZhi, getCurrentShiZhi, getResultfunction } from "./time.js";
+import { __JiaZi, __ShiGanZhi, getCurrentShiZhi, getResultfunction } from "./time.js";
 import { calendar } from "./calendar.js";
 
 (async () => {
@@ -12,7 +12,15 @@ import { calendar } from "./calendar.js";
         const n = v === 0 ? mod : v;
         return n;
     }
-
+    var gua64data: { type: string, name: string, text: string }[] = await fetch('data.json').then(x => x.json());
+    var types = [];
+    var gua64dataMap = {};
+    gua64data.forEach(x => {
+        if (!types.includes(x.type)) {
+            types.push(x.type);
+        }
+        gua64dataMap[`${x.type}_${x.name}`] = x.text;
+    });
     function nextN(mod: number, input: string = undefined): { n: number, o: number } {
         const r = (input === undefined || input === null || input === '') ? new Date().getMilliseconds() : parseInt(input, 10);
         const n = getSafe(r, mod);
@@ -108,20 +116,65 @@ import { calendar } from "./calendar.js";
             metaViewport.setAttribute('content', `width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,height=${window.innerHeight}px`)
         });
     });
-    const view = document.querySelector('.view');
-    view.addEventListener('touchstart', (e) => {
-        document.body.classList.toggle('show-detail', true);
+    document.querySelectorAll('.gua').forEach(view => {
+        view.addEventListener('touchstart', (e) => {
+            document.body.classList.toggle('show-detail', true);
+        });
+        view.addEventListener('mousedown', (e) => {
+            document.body.classList.toggle('show-detail', true);
+        });
+        view.addEventListener('touchend', (e) => {
+            document.body.classList.toggle('show-detail', false);
+        });
+        view.addEventListener('mouseup', (e) => {
+            document.body.classList.toggle('show-detail', false);
+        });
     });
-    view.addEventListener('mousedown', (e) => {
-        document.body.classList.toggle('show-detail', true);
+    const detail = document.querySelector<HTMLDivElement>('.detail');
+    const nav = detail.querySelector('#nav');
+    const tabs = detail.querySelector('#tabs')
+    document.querySelectorAll('.open-detail').forEach(e => {
+        e.addEventListener('click', ce => {
+            const tar = ce.target as HTMLElement;
+            if (tar.textContent) {
+                nav.innerHTML = '';
+                tabs.innerHTML = '';
+                let any = false;
+                for (const t of types) {
+                    const text = gua64dataMap[`${t}_${tar.textContent}`];
+                    if (text) {
+                        any = true;
+                        const tab = document.createElement('div');
+                        tab.classList.add('flex');
+                        tab.classList.add('tab');
+                        tabs.classList.add('w100');
+                        tab.textContent = text;
+                        tabs.append(tab);
+                        const n = document.createElement('button');
+                        n.setAttribute('type', 'button');
+                        n.classList.add('flex');
+                        n.textContent = t;
+                        n.addEventListener('click', () => {
+                            tabs.querySelectorAll('.tab').forEach(tab => tab.classList.toggle('active', false));
+                            nav.querySelectorAll('button').forEach(tab => tab.classList.toggle('active', false));
+                            tab.classList.toggle('active', true);
+                            n.classList.toggle('active', true);
+                        });
+                        nav.append(n);
+                    }
+                }
+                if (any) {
+                    detail.style.display = '';
+                    tabs.querySelector('.tab').classList.add('active');
+                    nav.querySelector('button').classList.add('active');
+                    const close = document.createElement('button');
+                    close.textContent = '關閉';
+                    close.addEventListener('click', () => detail.style.display = 'none');
+                    nav.append(close);
+                }
+            }
+        });
     });
-    view.addEventListener('touchend', (e) => {
-        document.body.classList.toggle('show-detail', false);
-    });
-    view.addEventListener('mouseup', (e) => {
-        document.body.classList.toggle('show-detail', false);
-    });
-
 })();
 
 

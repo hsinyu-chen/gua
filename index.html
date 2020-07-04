@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -22,14 +23,14 @@
                 <div class="row center">本掛</div>
                 <div class="gua flex" id="a1"></div>
                 <div class="gua flex" id="b1"></div>
-                <div class="row center clear" id="g1"></div>
+                <button type="button" class="row center clear open-detail" id="g1"></button>
             </div>
             <div class="column flex">
                 <div class="row center">變卦(<span id="change" class="clear"></span>)</div>
                 <div class="gua flex" id="a2"></div>
                 <div class="gua flex" id="b2"></div>
 
-                <div class="row center clear" id="g2"></div>
+                <button type="button" class="row center clear open-detail" id="g2"></button>
             </div>
         </div>
         <div class="row center">&nbsp;</div>
@@ -89,6 +90,10 @@
     <div class="c row">
         <button type="button" id="reset">清除</button>
         <button type="button" id="go">取掛</button>
+    </div>
+    <div class="detail column" style="display: none;">
+        <div id="nav" class="w100 row"></div>
+        <div id="tabs" class="w100 row flex"></div>
     </div>
     <script type="module" src="dist/scripts/main.js"></script>
     <script>
