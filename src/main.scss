@@ -90,17 +90,28 @@ div {
     overflow: hidden;
     background-color: var(--background);
 }
-.btm{
+
+.btm {
     margin-top: auto;
 }
+
 .au {
     align-items: center;
 
+    overflow-y: auto;
+
     h1 {
         font-size: 200%;
+        margin: 15px 0;
     }
+
+    p {
+        margin: 5px 0;
+    }
+
     h1 {
         font-size: 150%;
+        margin: 15px 0;
     }
 }
 
